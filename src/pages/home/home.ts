@@ -19,6 +19,9 @@ export class HomePage {
   }
 
   public logout(): void {
-    
+  }
+
+  public viewDetail(): void {
+    this.navCtrl.push('EventDetail');
   }
 }
