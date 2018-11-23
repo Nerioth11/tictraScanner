@@ -1,0 +1,33 @@
+<ion-content padding id="page2"  style="background:url(assets/imgs/sky-bg.jpg) no-repeat center;background-size:cover;">
+  <ion-grid>
+    <ion-card text-center>
+      <ion-card-content>
+        <form id="login-form" [formGroup]="loginForm">
+          <img src="assets/imgs/logo.png" class="logo-img" />
+          <ion-list>
+
+            <ion-item>
+              <ion-label>
+                <ion-icon name="contact"></ion-icon>
+              </ion-label>
+              <ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>
+                <ion-icon name="key"></ion-icon>
+              </ion-label>
+              <ion-input type="password" placeholder="Contraseña" formControlName="password"></ion-input>
+            </ion-item>
+
+          </ion-list>
+
+          <div class="button-container">
+            <button ion-button class="login-button" [disabled]="loginForm.invalid" (click)="goToHomePage()">Iniciar
+              sesión</button>
+          </div>
+        </form>
+      </ion-card-content>
+    </ion-card>
+  </ion-grid>
+</ion-content>
