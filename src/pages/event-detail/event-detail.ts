@@ -19,8 +19,6 @@ import { BarcodeScannerOptions, BarcodeScanner } from '@ionic-native/barcode-sca
 })
 export class EventDetailPage {
   options: BarcodeScannerOptions;
-  encodedText: string = '';
-  encodedData: any = {};
   scannedData: any = {};
 
 
@@ -36,7 +34,7 @@ export class EventDetailPage {
 
   public scan(): void {
     this.options = {
-      'prompt': 'Por favor, escanee el código de barras'
+      'prompt': 'Por favor, escanee el código de barras',
     }
     this.scanner.scan().then(
       (data) => {
@@ -47,16 +45,4 @@ export class EventDetailPage {
       }
     );
   }
-
-  public encode(): void {
-    this.scanner.encode(this.scanner.Encode.TEXT_TYPE, this.encodedText).then(
-      (data) => { 
-        this.encodedData = data;
-      },
-      (error) => {
-        console.log('Error: ', error);
-       }
-    );
-  }
-
 }
