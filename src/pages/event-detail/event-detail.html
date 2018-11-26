@@ -19,6 +19,20 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding no-bounce>
+  <ion-card>
+    <img src="assets/imgs/warm.jpg" />
+  </ion-card>
+
+  <ion-input type="text" [(ngModel)]="encodedText" ></ion-input>
+  <button ion-button block (click)="encode()">Codificar</button>
+  <div *ngIf="scannedData.text">
+    <label>El código escaneado es:</label>
+    <br>
+    <span>{{scannedData.text}}</span>
+  </div>
+  <ion-footer no-border>
+      <button class="scan-button" ion-button full color="secondary" (click)="scan()">Escanear</button>
+  </ion-footer>
 
 </ion-content>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { BarcodeScannerOptions, BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 /**
  * Generated class for the EventDetailPage page.
@@ -17,14 +18,45 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'event-detail.html',
 })
 export class EventDetailPage {
+  options: BarcodeScannerOptions;
+  encodedText: string = '';
+  encodedData: any = {};
+  scannedData: any = {};
+
 
   constructor(
     public navCtrl: NavController,
-    public navParams: NavParams
+    public navParams: NavParams,
+    public scanner: BarcodeScanner
   ) {
   }
 
   public goToEventStadistics() {
+  }
+
+  public scan(): void {
+    this.options = {
+      'prompt': 'Por favor, escanee el código de barras'
+    }
+    this.scanner.scan().then(
+      (data) => {
+        this.scannedData = data;
+       },
+      (error) => { 
+        console.log( 'Error: ', error);
+      }
+    );
+  }
+
+  public encode(): void {
+    this.scanner.encode(this.scanner.Encode.TEXT_TYPE, this.encodedText).then(
+      (data) => { 
+        this.encodedData = data;
+      },
+      (error) => {
+        console.log('Error: ', error);
+       }
+    );
   }
 
 }
