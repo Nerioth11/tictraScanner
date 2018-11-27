@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { HTTP } from '@ionic-native/http';
 
 @IonicPage()
 @Component({
@@ -10,11 +11,12 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class LoginPage {
   public loginForm: FormGroup;
 
-  constructor(
+  public constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private formBuilder: FormBuilder,
-  ) {
+    private http: HTTP
+  ){
     this.createLoginForm();
   }
 
@@ -25,8 +27,17 @@ export class LoginPage {
     });
   }
 
-  public goToHomePage(): void { 
-    this.navCtrl.setRoot('Home')
+  public login(): void{
+
+    this.http.post('https://tictra-test.appspot.com/LogInAppControl',
+      this.loginForm.value, { 'Content-Type': 'application/json' })
+      .then(result => {
+        if(result.data != 'KO'){
+          this.navCtrl.setRoot('Home', { userId: result.data })
+        }
+        alert(result.data);
+      })
+      .catch( error => alert('Usuario o contraseña erróneos'));
   }
 
 }

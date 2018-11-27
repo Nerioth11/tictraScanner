@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { HTTP } from '@ionic-native/http';
 
 
 @IonicPage({
@@ -11,11 +12,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'home.html',
 })
 export class HomePage {
+  userId: number;
 
-  constructor(
+  public constructor(
     public navCtrl: NavController,
-    public navParams: NavParams
+    public navParams: NavParams,
+    private http: HTTP
   ) {
+    this.userId = this.navParams.get('userId');
+    this.getUserEvents();
+  }
+
+  public getUserEvents(): void {
+    this.http.get('https://tictra-test.appspot.com/list_events_pda?userId=' + this.userId, {}, { 'Content-Type': 'application/json' })
+    .then( result => alert(result.data))
   }
 
   public logout(): void {

@@ -1,0 +1,166 @@
+{
+	"info": {
+		"_postman_id": "c5068870-b8ec-4e1e-ade3-4a045a69ed3a",
+		"name": "TictraScanner",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "alvarosuarez.1453@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "alpha123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://tictra-test.appspot.com/LogInAppControl",
+					"protocol": "https",
+					"host": [
+						"tictra-test",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"LogInAppControl"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Events",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://tictra-test.appspot.com/list_events_pda?userId=5680534013345792",
+					"protocol": "https",
+					"host": [
+						"tictra-test",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"list_events_pda"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "5680534013345792"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check Event Ticket",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://tictra-test.appspot.com/check_ticket_app?eventId=5648703809388544&code=4817552005922816",
+					"protocol": "https",
+					"host": [
+						"tictra-test",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"check_ticket_app"
+					],
+					"query": [
+						{
+							"key": "eventId",
+							"value": "5648703809388544"
+						},
+						{
+							"key": "code",
+							"value": "4817552005922816"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Event Stadistics",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://tictra-test.appspot.com/statics_events_pda?event=5648703809388544",
+					"protocol": "https",
+					"host": [
+						"tictra-test",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"statics_events_pda"
+					],
+					"query": [
+						{
+							"key": "event",
+							"value": "5648703809388544"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
