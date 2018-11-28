@@ -1,166 +1,174 @@
 {
-	"info": {
-		"_postman_id": "c5068870-b8ec-4e1e-ade3-4a045a69ed3a",
-		"name": "TictraScanner",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
+	"id": "a781bf75-b4b8-a6f2-cd87-9828c415939e",
+	"name": "TictraScanner",
+	"description": "",
+	"order": [
+		"435c9475-b6c2-a358-1cb3-004b89de3a97",
+		"a27ddd3d-3721-460b-a54a-a49b7a7862a6",
+		"85b6fc5c-0aa7-c4b6-6a23-627f6bc9b4cf",
+		"98164dc6-3a3e-6d7a-a725-40332f463338"
+	],
+	"folders_order": [],
+	"folders": [],
+	"owner": "3760299",
+	"hasRequests": true,
+	"requests": [
 		{
+			"id": "435c9475-b6c2-a358-1cb3-004b89de3a97",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "https://tictra-test.appspot.com/LogInNewApp",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "email",
+					"value": "alvarosuarez.1453@gmail.com",
+					"type": "text"
+				},
+				{
+					"key": "password",
+					"value": "alpha123",
+					"type": "text"
+				}
+			],
+			"dataMode": "urlencoded",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1543403378518,
 			"name": "Login",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/x-www-form-urlencoded",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "email",
-							"value": "alvarosuarez.1453@gmail.com",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "alpha123",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "https://tictra-test.appspot.com/LogInAppControl",
-					"protocol": "https",
-					"host": [
-						"tictra-test",
-						"appspot",
-						"com"
-					],
-					"path": [
-						"LogInAppControl"
-					]
-				}
-			},
-			"response": []
+			"description": "",
+			"collectionId": "a781bf75-b4b8-a6f2-cd87-9828c415939e",
+			"responses": []
 		},
 		{
-			"name": "Get User Events",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/x-www-form-urlencoded",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "https://tictra-test.appspot.com/list_events_pda?userId=5680534013345792",
-					"protocol": "https",
-					"host": [
-						"tictra-test",
-						"appspot",
-						"com"
-					],
-					"path": [
-						"list_events_pda"
-					],
-					"query": [
-						{
-							"key": "userId",
-							"value": "5680534013345792"
-						}
-					]
+			"id": "85b6fc5c-0aa7-c4b6-6a23-627f6bc9b4cf",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
 				}
-			},
-			"response": []
-		},
-		{
+			],
+			"url": "https://tictra-test.appspot.com/NewCheckApp?eventId=6193147453374464&code=5643980486213632",
+			"queryParams": [
+				{
+					"key": "eventId",
+					"value": "6193147453374464",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "code",
+					"value": "5643980486213632",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1543409416754,
 			"name": "Check Event Ticket",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/x-www-form-urlencoded"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "https://tictra-test.appspot.com/check_ticket_app?eventId=5648703809388544&code=4817552005922816",
-					"protocol": "https",
-					"host": [
-						"tictra-test",
-						"appspot",
-						"com"
-					],
-					"path": [
-						"check_ticket_app"
-					],
-					"query": [
-						{
-							"key": "eventId",
-							"value": "5648703809388544"
-						},
-						{
-							"key": "code",
-							"value": "4817552005922816"
-						}
-					]
-				}
-			},
-			"response": []
+			"description": "",
+			"collectionId": "a781bf75-b4b8-a6f2-cd87-9828c415939e",
+			"responses": [],
+			"rawModeData": ""
 		},
 		{
-			"name": "Get Event Stadistics",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/x-www-form-urlencoded"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "https://tictra-test.appspot.com/statics_events_pda?event=5648703809388544",
-					"protocol": "https",
-					"host": [
-						"tictra-test",
-						"appspot",
-						"com"
-					],
-					"path": [
-						"statics_events_pda"
-					],
-					"query": [
-						{
-							"key": "event",
-							"value": "5648703809388544"
-						}
-					]
+			"id": "98164dc6-3a3e-6d7a-a725-40332f463338",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
 				}
-			},
-			"response": []
+			],
+			"url": "https://tictra-test.appspot.com/StatisticsApp?event=5648703809388544",
+			"queryParams": [
+				{
+					"key": "event",
+					"value": "5648703809388544",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1543409264883,
+			"name": "Get Event Stadistics",
+			"description": "",
+			"collectionId": "a781bf75-b4b8-a6f2-cd87-9828c415939e",
+			"responses": [],
+			"rawModeData": ""
+		},
+		{
+			"id": "a27ddd3d-3721-460b-a54a-a49b7a7862a6",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "https://tictra-test.appspot.com/ListEventsNewApp?userId=5680534013345792",
+			"queryParams": [
+				{
+					"key": "userId",
+					"value": "5680534013345792",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1543404818477,
+			"name": "Get User Events",
+			"description": "",
+			"collectionId": "a781bf75-b4b8-a6f2-cd87-9828c415939e",
+			"responses": [],
+			"rawModeData": ""
 		}
 	]
 }
