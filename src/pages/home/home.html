@@ -17,14 +17,8 @@
 
   <img src="assets/imgs/logo.png" class="logo-img" />
 
-  <ion-card (click)="viewDetail()">
-    <img src="assets/imgs/warm.jpg" />
+  <ion-card (click)="viewDetail(event)" *ngFor="let event of userEvents">
+    <img src="{{event.bannerImage}}" />
   </ion-card>
-
-  <ion-card>
-    <img src="assets/imgs/dyed.jpg" />
-  </ion-card>
-
-  
 
 </ion-content>

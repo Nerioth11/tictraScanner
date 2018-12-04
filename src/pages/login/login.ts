@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { HTTP } from '@ionic-native/http';
+import { UserService } from '../../app/core/services/user.service';
+import { LocalStorageService } from '../../app/core/services/local-storage.service';
 
 @IonicPage()
 @Component({
@@ -15,9 +16,20 @@ export class LoginPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private formBuilder: FormBuilder,
-    private http: HTTP
-  ){
+    private userSvc: UserService,
+    private localSvc: LocalStorageService,
+    private toastCtrl: ToastController
+
+  ) {
     this.createLoginForm();
+
+    //TEMPORAL
+    this.localSvc.set('userId', '5680534013345792');
+
+    if (this.localSvc.get('userId') != undefined) {
+      alert(this.localSvc.get('userId'));
+      this.navCtrl.setRoot('Home');
+    }
   }
 
   public createLoginForm(): void {
@@ -27,17 +39,19 @@ export class LoginPage {
     });
   }
 
-  public login(): void{
-
-    this.http.post('https://tictra-test.appspot.com/LogInAppControl',
-      this.loginForm.value, { 'Content-Type': 'application/json' })
-      .then(result => {
-        if(result.data != 'KO'){
-          this.navCtrl.setRoot('Home', { userId: result.data })
-        }
-        alert(result.data);
-      })
-      .catch( error => alert('Usuario o contraseña erróneos'));
+  public login(): void {
+    this.userSvc.login(this.loginForm.value)
+      .subscribe((res: any) => {
+        this.localSvc.set('userId', res.id);
+        this.navCtrl.setRoot('Home');
+      }), error => {
+        let toast = this.toastCtrl.create({
+          message: error.message,
+          duration: 3000,
+          position: 'bottom'
+        });
+        toast.present();
+      };
   }
 
 }

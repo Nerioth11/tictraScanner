@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>Warm</ion-title>
+    <ion-title>{{event?.name}}</ion-title>
 
     <ion-buttons end>
       <button ion-button icon-only (click)="goToEventStadistics()">
@@ -21,7 +21,7 @@
 
 <ion-content padding no-bounce>
   <ion-card>
-    <img src="assets/imgs/warm.jpg" />
+    <img src="{{event?.bannerImage}}" />
   </ion-card>
 
   <div *ngIf="scannedData.text">
@@ -29,6 +29,11 @@
     <br>
     <span>{{scannedData.text}}</span>
   </div>
+
+  <img src="../assets/imgs/success.svg" *ngIf="ticketCheck?.status == statusType.success">
+  <img src="../assets/imgs/already-scanned.svg" *ngIf="ticketCheck?.status == statusType.alreadyScanned">
+  <img src="../assets/imgs/not-valid.svg" *ngIf="ticketCheck?.status == statusType.notValid">
+
   <ion-footer no-border>
       <button class="scan-button" ion-button full color="primary" (click)="scan()">
         <img src="../assets/imgs/scan-button.svg" class="scan-button-icon">

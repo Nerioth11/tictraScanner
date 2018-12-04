@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { HTTP } from '@ionic-native/http';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { UserService } from '../../app/core/services/user.service';
+import { LocalStorageService } from '../../app/core/services/local-storage.service';
+import { Event } from '../../app/shared/models/event.model';
 
 
 @IonicPage({
@@ -13,25 +15,37 @@ import { HTTP } from '@ionic-native/http';
 })
 export class HomePage {
   userId: number;
+  userEvents: Event[];
 
   public constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private http: HTTP
+    private localSvc: LocalStorageService,
+    private userSvc: UserService,
+    private toastCtrl: ToastController
   ) {
-    this.userId = this.navParams.get('userId');
+    this.userId = this.localSvc.get('userId');
     this.getUserEvents();
   }
 
   public getUserEvents(): void {
-    this.http.get('https://tictra-test.appspot.com/list_events_pda?userId=' + this.userId, {}, { 'Content-Type': 'application/json' })
-    .then( result => alert(result.data))
+    this.userSvc.getUserEvents(this.userId)
+      .subscribe(
+        events => this.userEvents = events,
+        error => {
+          let toast = this.toastCtrl.create({
+            message: error.message,
+            duration: 3000,
+            position: 'bottom'
+          });
+          toast.present();
+        });
   }
 
   public logout(): void {
   }
 
-  public viewDetail(): void {
-    this.navCtrl.push('EventDetail');
+  public viewDetail(event: Event): void {
+    this.navCtrl.push('EventDetail', { event: event });
   }
 }
