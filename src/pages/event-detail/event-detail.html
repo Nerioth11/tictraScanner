@@ -24,20 +24,19 @@
     <img src="{{event?.bannerImage}}" />
   </ion-card>
 
-  <div *ngIf="scannedData.text">
-    <label>El código escaneado es:</label>
-    <br>
-    <span>{{scannedData.text}}</span>
+  <div class="animation-container">
+    <img src="../assets/imgs/success.svg" *ngIf="ticketCheck?.status == statusType.success" class="animation">
+    <img src="../assets/imgs/already-scanned.svg" *ngIf="ticketCheck?.status == statusType.alreadyScanned" class="animation">
+    <label class="label-size" *ngIf="ticketCheck?.content && ticketCheck?.status == statusType.alreadyScanned">
+      {{ticketCheck.content}}
+    </label>
+    <img src="../assets/imgs/not-valid.svg" *ngIf="ticketCheck?.status == statusType.notValid" class="animation">
   </div>
 
-  <img src="../assets/imgs/success.svg" *ngIf="ticketCheck?.status == statusType.success">
-  <img src="../assets/imgs/already-scanned.svg" *ngIf="ticketCheck?.status == statusType.alreadyScanned">
-  <img src="../assets/imgs/not-valid.svg" *ngIf="ticketCheck?.status == statusType.notValid">
-
-  <ion-footer no-border>
-      <button class="scan-button" ion-button full color="primary" (click)="scan()">
-        <img src="../assets/imgs/scan-button.svg" class="scan-button-icon">
-      </button>
-  </ion-footer>
+  <div class="footer">
+    <button class="scan-button" ion-button full color="primary" (click)="scan()">
+      <img src="../assets/imgs/scan-button.svg" class="scan-button-icon">
+    </button>
+  </div>
 
 </ion-content>

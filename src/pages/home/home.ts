@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
 import { UserService } from '../../app/core/services/user.service';
 import { LocalStorageService } from '../../app/core/services/local-storage.service';
 import { Event } from '../../app/shared/models/event.model';
@@ -22,7 +22,8 @@ export class HomePage {
     public navParams: NavParams,
     private localSvc: LocalStorageService,
     private userSvc: UserService,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private alertCtrl: AlertController
   ) {
     this.userId = this.localSvc.get('userId');
     this.getUserEvents();
@@ -43,6 +44,28 @@ export class HomePage {
   }
 
   public logout(): void {
+    this.localSvc.clear();
+    this.showConfirmDialog();
+  }
+
+  public showConfirmDialog(): void {
+    let alert = this.alertCtrl.create({
+      title: 'Cerrar sesión',
+      message: '¿Está seguro de que desea cerrar la sesión?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+        },
+        {
+          text: 'Cerrar sesión',
+          handler: () => {
+            this.navCtrl.setRoot('Login');
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
   public viewDetail(event: Event): void {

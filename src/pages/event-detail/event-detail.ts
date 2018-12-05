@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, trigger, transition } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { BarcodeScannerOptions, BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Event } from '../../app/shared/models/event.model';
 import { EventService } from '../../app/core/services/event.service';
 import { TicketCheck } from '../../app/shared/models/ticket-check.model';
 import { TicketStatus } from '../../app/shared/ui.utils';
+import { useAnimation } from '@angular/core/src/animation/dsl';
 
 /**
  * Generated class for the EventDetailPage page.
@@ -19,7 +20,7 @@ import { TicketStatus } from '../../app/shared/ui.utils';
 
 @Component({
   selector: 'page-event-detail',
-  templateUrl: 'event-detail.html',
+  templateUrl: 'event-detail.html'
 })
 export class EventDetailPage {
   event: Event;
@@ -43,6 +44,9 @@ export class EventDetailPage {
   }
 
   public scan(): void {
+    this.ticketCheck = {
+      status: 0
+    }
     this.options = {
       'prompt': 'Por favor, escanee el código de barras',
     }
@@ -60,16 +64,24 @@ export class EventDetailPage {
   public checkEventStatus(): void {
     this.eventSvc.checkEventTicket(this.event.id, this.scannedData.text).subscribe(
       (res: any) => {
-        this.ticketCheck.status = 1;
-        alert(res);
+        this.setTicketCheckStatus(res.code);
       },
-      error => {
+      errorContainer => {
+        this.setTicketCheckStatus(errorContainer.error.code, errorContainer.error.error);
         let toast = this.toastCtrl.create({
-          message: error.error,
+          message: errorContainer.error.error,
           duration: 3000,
           position: 'bottom'
         });
         toast.present();
       });
+  }
+
+  public setTicketCheckStatus(code: TicketStatus, content?: string): void {
+    // setTimeout(() => this.ticketCheck.status = code, 1000);
+    this.ticketCheck.status = code;
+    if (content) {
+      this.ticketCheck.content = content;
+    }
   }
 }
