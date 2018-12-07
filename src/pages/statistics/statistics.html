@@ -1,0 +1,49 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title> Estadísticas de entradas</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div class="statistics-type-container total-statistics">
+    <label class="type-title">Total</label>
+    <circle-progress [percent]="totalChecked / totalSelling * 100" [radius]="60" [unitsFontSize]="16"
+      [outerStrokeWidth]="10" [outerStrokeColor]="'#78C000'" [innerStrokeWidth]="5" [innerStrokeColor]="'#C7E596'"
+      [titleFontSize]="22" [subtitle]="totalChecked + '/' + totalSelling" [subtitleFontSize]="14" [animation]="true"
+      [animationDuration]="300">
+    </circle-progress>
+  </div>
+  <div class="statistics-type-container">
+    <label class="type-title">Estándar</label>
+    <div class="statistics-row">
+      <div class="statistics-column" *ngFor="let standStat of standardStatistics">
+        <circle-progress [percent]="standStat.checked / standStat.total * 100" [radius]="60" [unitsFontSize]="16"
+          [outerStrokeWidth]="10" [outerStrokeColor]="'#3869c5'" [innerStrokeWidth]="5" [innerStrokeColor]="'#ffa800'"
+          [titleFontSize]="22" [subtitle]="standStat.checked + '/' + standStat.total" [subtitleFontSize]="14"
+          [animation]="true" [animationDuration]="300">
+        </circle-progress>
+        <label class="stat-title">{{standStat.sectorName}}</label>
+        <p class="stat-subtitle">Estándar</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="statistics-type-container">
+    <label class="type-title">Invitaciones</label>
+    <div class="statistics-row">
+      <div class="statistics-column" *ngFor="let invStat of invitationStatistics">
+        <circle-progress [percent]="invStat.checked / invStat.total * 100" [radius]="60" [unitsFontSize]="16"
+          [outerStrokeWidth]="10" [outerStrokeColor]="'#009acb'" [innerStrokeWidth]="5" [innerStrokeColor]="'#ffa800'"
+          [titleFontSize]="22" [subtitle]="invStat.checked + '/' + invStat.total" [subtitleFontSize]="14" [animation]="true"
+          [animationDuration]="300">
+        </circle-progress>
+        <label class="stat-title">{{invStat.sectorName}}</label>
+        <p class="stat-subtitle">Invitación</p>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

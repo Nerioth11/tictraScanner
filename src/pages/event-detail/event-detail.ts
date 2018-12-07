@@ -5,14 +5,6 @@ import { Event } from '../../app/shared/models/event.model';
 import { EventService } from '../../app/core/services/event.service';
 import { TicketCheck } from '../../app/shared/models/ticket-check.model';
 import { TicketStatus } from '../../app/shared/ui.utils';
-import { useAnimation } from '@angular/core/src/animation/dsl';
-
-/**
- * Generated class for the EventDetailPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage({
   name: 'EventDetail'
@@ -30,7 +22,7 @@ export class EventDetailPage {
   statusType = TicketStatus;
 
 
-  constructor(
+  public constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public scanner: BarcodeScanner,
@@ -41,6 +33,7 @@ export class EventDetailPage {
   }
 
   public goToEventStadistics() {
+    this.navCtrl.push('Statistics', { event: this.event });
   }
 
   public scan(): void {
