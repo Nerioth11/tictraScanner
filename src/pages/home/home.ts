@@ -33,14 +33,14 @@ export class HomePage {
     this.userSvc.getUserEvents(this.userId)
       .subscribe(
         events => this.userEvents = events,
-        error => {
-          let toast = this.toastCtrl.create({
-            message: error.message,
-            duration: 3000,
-            position: 'bottom'
-          });
-          toast.present();
+      ), error => {
+        let toast = this.toastCtrl.create({
+          message: error.message,
+          duration: 3000,
+          position: 'bottom'
         });
+        toast.present();
+      };
   }
 
   public logout(): void {

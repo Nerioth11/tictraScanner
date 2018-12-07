@@ -24,6 +24,7 @@ export class LoginPage {
     private toastCtrl: ToastController
 
   ) {
+    this.localSvc.clear();
     this.createLoginForm();
 
     if (this.localSvc.get('userId') != undefined) {
@@ -39,20 +40,18 @@ export class LoginPage {
   }
 
   public login(): void {
-    this.localSvc.set('userId', '5680534013345792');
     this.navCtrl.setRoot('Home');
-    // this.userSvc.login(this.loginForm.value)
-    //   .subscribe((res: any) => {
-    //     this.localSvc.set('userId', res.id);
-    //     this.navCtrl.setRoot('Home');
-    //   }), error => {
-    //     let toast = this.toastCtrl.create({
-    //       message: error.message,
-    //       duration: 3000,
-    //       position: 'bottom'
-    //     });
-    //     toast.present();
-    //   };
-  }
-
+    this.userSvc.login(this.loginForm.value)
+      .then((res: any) => {
+        this.localSvc.set('userId', JSON.parse(res.data).id);
+        this.navCtrl.setRoot('Home');
+      }).catch(error => {
+        let toast = this.toastCtrl.create({
+          message: error.message,
+          duration: 3000,
+          position: 'bottom'
+        });
+        toast.present();
+      });
+  };
 }
