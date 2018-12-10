@@ -8,10 +8,10 @@ export class EventService {
     public constructor(private http: HttpClient) { }
 
     public checkEventTicket(eventId: number, code: number): Observable<{}> {
-        return this.http.get(`https://tictra-test.appspot.com/NewCheckApp?eventId=${eventId}&code=${code}`);
+        return this.http.get(`https://full-tictra.appspot.com/NewCheckApp?eventId=${eventId}&code=${code}`);
     }
 
     public getEventStatistics(eventId: number): Observable<EventStatistic[]> {
-        return this.http.get<EventStatistic[]>(`https://tictra-test.appspot.com/StatisticsApp?event=${eventId}`);
+        return this.http.get<EventStatistic[]>(`https://full-tictra.appspot.com/StatisticsApp?event=${eventId}`);
     }
 }

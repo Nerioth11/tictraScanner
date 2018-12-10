@@ -24,7 +24,7 @@
 					"enabled": true
 				}
 			],
-			"url": "https://tictra-test.appspot.com/LogInNewApp",
+			"url": "https://full-tictra.appspot.com/LogInNewApp",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -63,7 +63,7 @@
 					"enabled": true
 				}
 			],
-			"url": "https://tictra-test.appspot.com/NewCheckApp?eventId=6193147453374464&code=5643980486213632",
+			"url": "https://full-tictra.appspot.com/NewCheckApp?eventId=6193147453374464&code=5643980486213632",
 			"queryParams": [
 				{
 					"key": "eventId",
@@ -107,7 +107,7 @@
 					"enabled": true
 				}
 			],
-			"url": "https://tictra-test.appspot.com/StatisticsApp?event=5648703809388544",
+			"url": "https://full-tictra.appspot.com/StatisticsApp?event=5648703809388544",
 			"queryParams": [
 				{
 					"key": "event",
@@ -144,7 +144,7 @@
 					"enabled": true
 				}
 			],
-			"url": "https://tictra-test.appspot.com/ListEventsNewApp?userId=5680534013345792",
+			"url": "https://full-tictra.appspot.com/ListEventsNewApp?userId=5680534013345792",
 			"queryParams": [
 				{
 					"key": "userId",

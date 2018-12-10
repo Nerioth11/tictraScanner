@@ -13,10 +13,10 @@ export class UserService {
     ) { }
 
     public login(user: User): Promise<Object> {
-        return this.httpNative.post('https://tictra-test.appspot.com/LogInNewApp', user, { 'Content-Type': 'application/json' });
+        return this.httpNative.post('https://full-tictra.appspot.com/LogInNewApp', user, { 'Content-Type': 'application/json' });
     }
 
     public getUserEvents(userId: number): Observable<Event[]> {
-        return this.http.get<Event[]>(`https://tictra-test.appspot.com/ListEventsNewApp?userId=${userId}`);
+        return this.http.get<Event[]>(`https://full-tictra.appspot.com/ListEventsNewApp?userId=${userId}`);
     }
 }
