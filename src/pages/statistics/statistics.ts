@@ -42,12 +42,13 @@ export class StatisticsPage {
           this.totalSelling += stat.total;
         });
       },
-      errorContainer => {
+      error => {
         let toast = this.toastCtrl.create({
-          message: errorContainer.error.error,
+          message: error.error.error,
           duration: 3000,
-          position: 'bottom'
+          position: "bottom"
         });
+        toast.present();
       }
     )
   }

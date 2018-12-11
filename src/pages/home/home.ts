@@ -37,7 +37,7 @@ export class HomePage {
         let toast = this.toastCtrl.create({
           message: error.message,
           duration: 3000,
-          position: 'bottom'
+          position: "bottom"
         });
         toast.present();
       };

@@ -9,7 +9,7 @@
 
 <ion-content padding>
   <div class="statistics-type-container total-statistics">
-    <label class="type-title">Total</label>
+    <label class="type-title" *ngIf="standardStatistics.length > 0 || invitationStatistics.length > 0">Total</label>
     <circle-progress [percent]="totalChecked / totalSelling * 100" [radius]="60" [unitsFontSize]="16"
       [outerStrokeWidth]="10" [outerStrokeColor]="'#78C000'" [innerStrokeWidth]="5" [innerStrokeColor]="'#C7E596'"
       [titleFontSize]="22" [subtitle]="totalChecked + '/' + totalSelling" [subtitleFontSize]="14" [animation]="true"
@@ -17,10 +17,10 @@
     </circle-progress>
   </div>
   <div class="statistics-type-container">
-    <label class="type-title">Estándar</label>
+    <label class="type-title" *ngIf="standardStatistics.length > 0">Estándar</label>
     <div class="statistics-row">
       <div class="statistics-column" *ngFor="let standStat of standardStatistics">
-        <circle-progress [percent]="standStat.checked / standStat.total * 100" [radius]="60" [unitsFontSize]="16"
+        <circle-progress [percent]="standStat.checked / ( standStat.total == 0 ? 1 : standStat.total ) * 100" [radius]="60" [unitsFontSize]="16"
           [outerStrokeWidth]="10" [outerStrokeColor]="'#3869c5'" [innerStrokeWidth]="5" [innerStrokeColor]="'#ffa800'"
           [titleFontSize]="22" [subtitle]="standStat.checked + '/' + standStat.total" [subtitleFontSize]="14"
           [animation]="true" [animationDuration]="300">
@@ -32,10 +32,10 @@
   </div>
 
   <div class="statistics-type-container">
-    <label class="type-title">Invitaciones</label>
+    <label class="type-title" *ngIf="invitationStatistics.length > 0" >Invitaciones</label>
     <div class="statistics-row">
       <div class="statistics-column" *ngFor="let invStat of invitationStatistics">
-        <circle-progress [percent]="invStat.checked / invStat.total * 100" [radius]="60" [unitsFontSize]="16"
+        <circle-progress [percent]="invStat.checked / ( invStat.total == 0 ? 1 : invStat.total ) * 100" [radius]="60" [unitsFontSize]="16"
           [outerStrokeWidth]="10" [outerStrokeColor]="'#009acb'" [innerStrokeWidth]="5" [innerStrokeColor]="'#ffa800'"
           [titleFontSize]="22" [subtitle]="invStat.checked + '/' + invStat.total" [subtitleFontSize]="14" [animation]="true"
           [animationDuration]="300">

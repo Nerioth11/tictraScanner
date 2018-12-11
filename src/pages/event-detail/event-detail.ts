@@ -1,4 +1,4 @@
-import { Component, trigger, transition } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { BarcodeScannerOptions, BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Event } from '../../app/shared/models/event.model';
@@ -71,7 +71,6 @@ export class EventDetailPage {
   }
 
   public setTicketCheckStatus(code: TicketStatus, content?: string): void {
-    // setTimeout(() => this.ticketCheck.status = code, 1000);
     this.ticketCheck.status = code;
     if (content) {
       this.ticketCheck.content = content;
